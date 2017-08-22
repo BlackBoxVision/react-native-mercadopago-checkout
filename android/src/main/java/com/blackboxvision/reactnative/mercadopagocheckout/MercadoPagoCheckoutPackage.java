@@ -1,4 +1,4 @@
-package com.line64.reactnative.checkoutmercadopago;
+package com.blackboxvision.reactnative.mercadopagocheckout;
 
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.JavaScriptModule;
@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CheckoutMercadoPagoPackage implements ReactPackage {
+public class MercadoPagoCheckoutPackage implements ReactPackage {
 
     @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
@@ -24,7 +24,7 @@ public class CheckoutMercadoPagoPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         final List<NativeModule> modules = new ArrayList<>();
-        modules.add(new CheckoutMercadoPagoModule(reactContext));
+        modules.add(new MercadoPagoCheckoutModule(reactContext));
         return modules;
     }
 }

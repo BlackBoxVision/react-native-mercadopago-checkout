@@ -1,4 +1,4 @@
-package com.line64.reactnative.checkoutmercadopago;
+package com.blackboxvision.reactnative.mercadopagocheckout;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -16,7 +16,7 @@ import com.mercadopago.util.JsonUtil;
 
 import static android.app.Activity.RESULT_CANCELED;
 
-public final class CheckoutMercadoPagoEventListener implements ActivityEventListener {
+public final class MercadoPagoCheckoutEventListener implements ActivityEventListener {
     private static final String PAYMENT_CANCELLED = "PAYMENT_CANCELLED";
     private static final String PAYMENT_ERROR = "PAYMENT_ERROR";
 

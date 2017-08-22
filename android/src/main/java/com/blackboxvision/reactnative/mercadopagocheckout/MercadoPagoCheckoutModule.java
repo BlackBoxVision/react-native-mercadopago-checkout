@@ -1,4 +1,4 @@
-package com.line64.reactnative.checkoutmercadopago;
+package com.blackboxvision.reactnative.mercadopagocheckout;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,22 +13,22 @@ import com.mercadopago.core.MercadoPagoCheckout;
 import com.mercadopago.preferences.CheckoutPreference;
 import com.mercadopago.preferences.DecorationPreference;
 
-public final class CheckoutMercadoPagoModule extends ReactContextBaseJavaModule {
-    private CheckoutMercadoPagoEventListener eventResultListener;
+public final class MercadoPagoCheckoutModule extends ReactContextBaseJavaModule {
+    private MercadoPagoCheckoutEventListener eventResultListener;
 
-    public CheckoutMercadoPagoModule(ReactApplicationContext context) {
+    public MercadoPagoCheckoutModule(ReactApplicationContext context) {
         super(context);
         init(context);
     }
 
     private void init(@NonNull ReactApplicationContext context) {
-        eventResultListener = new CheckoutMercadoPagoEventListener();
+        eventResultListener = new MercadoPagoCheckoutEventListener();
         context.addActivityEventListener(eventResultListener);
     }
 
     @Override
     public String getName() {
-        return "CheckoutMercadoPagoModule";
+        return "MercadoPagoCheckoutModule";
     }
 
     public void onNewIntent(Intent intent) { }
