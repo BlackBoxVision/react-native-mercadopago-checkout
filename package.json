@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JonatanSalas/react-native-checkout-mercadopago.git"
+    "url": "git+https://github.com/BlackBoxVision/react-native-mercadopago-checkout.git"
   },
   "keywords": [
     "react",
@@ -17,10 +17,10 @@
     "checkout",
     "bridge"
   ],
-  "author": "Line64",
+  "author": "BlackBox Vision",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JonatanSalas/react-native-checkout-mercadopago/issues"
+    "url": "https://github.com/BlackBoxVision/react-native-mercadopago-checkout/issues"
   },
-  "homepage": "https://github.com/JonatanSalas/react-native-checkout-mercadopago#readme"
+  "homepage": "https://github.com/BlackBoxVision/react-native-mercadopago-checkout#readme"
 }
