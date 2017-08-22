@@ -1,0 +1,27 @@
+{
+	"name": "example",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "node node_modules/react-native/local-cli/cli.js start",
+		"sync": "rm -rf ./node_modules/react-native-checkout-mercadopago; sane '/usr/bin/rsync -v -a --exclude .git --exclude example --exclude __tests__ --exclude node_modules ../ ./node_modules/react-native-checkout-mercadopago/' .. --glob='{**/*.json,**/*.js}'",
+		"prettier": "./node_modules/.bin/prettier --tab-width 4 --print-width 120 --single-quote --write '*.js'",
+		"test": "jest"
+	},
+	"dependencies": {
+		"react": "16.0.0-alpha.6",
+		"react-native": "^0.43.0",
+		"react-native-checkout-mercadopago": "file:../"
+	},
+	"devDependencies": {
+		"babel-jest": "17.0.2",
+		"babel-preset-react-native": "1.9.0",
+		"jest": "17.0.3",
+		"prettier": "^1.5.3",
+		"react-test-renderer": "15.4.1",
+		"sane": "^1.4.1"
+	},
+	"jest": {
+		"preset": "react-native"
+	}
+}

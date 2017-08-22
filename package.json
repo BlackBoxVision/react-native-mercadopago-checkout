@@ -1,0 +1,26 @@
+{
+  "name": "react-native-mercadopago-checkout",
+  "version": "1.0.0",
+  "description": "MercadoPago v3.2.0 for react-native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonatanSalas/react-native-checkout-mercadopago.git"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "mercadopago",
+    "checkout",
+    "bridge"
+  ],
+  "author": "Line64",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JonatanSalas/react-native-checkout-mercadopago/issues"
+  },
+  "homepage": "https://github.com/JonatanSalas/react-native-checkout-mercadopago#readme"
+}
