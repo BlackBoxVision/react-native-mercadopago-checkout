@@ -1,6 +1,8 @@
 # React-Native MercadoPago Checkout 
 > Simple react-native bridge for MercadoPago SDK v3.2.0
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT) [![npm version](https://badge.fury.io/js/react-native-mercadopago-checkout.svg)](https://badge.fury.io/js/react-native-mercadopago-checkout) [![npm downloads](https://img.shields.io/npm/dm/react-native-mercadopago-checkout.svg)](https://www.npmjs.com/package/react-native-mercadopago-checkout) 
+
 ## Installation 
 
 ### YARN 
