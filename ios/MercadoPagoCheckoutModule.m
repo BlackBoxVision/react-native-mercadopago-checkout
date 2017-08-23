@@ -1,9 +1,9 @@
-#import "CheckoutMercadoPagoModule.h"
+#import "MercadoPagoCheckoutModule.h"
 #import "AppDelegate.h"
 
 @import MercadoPagoSDK;
 
-@implementation CheckoutMercadoPagoModule
+@implementation MercadoPagoCheckoutModule
 
 RCT_EXPORT_MODULE()
 
