@@ -1,6 +1,6 @@
 {
   "name": "react-native-mercadopago-checkout",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "MercadoPago v3.2.0 for react-native",
   "main": "index.js",
   "scripts": {

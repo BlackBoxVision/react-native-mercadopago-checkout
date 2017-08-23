@@ -1,6 +1,6 @@
 import { NativeModules } from 'react-native';
 
-const { CheckoutMercadoPagoModule } = NativeModules;
+const { MercadoPagoCheckoutModule } = NativeModules;
 
 const defaultOptions = {
     backgroundColor: "#009EE3",
@@ -20,7 +20,7 @@ export class MercadoPagoCheckout {
     static async startForPayment(publicKey, preferenceId, options = defaultOptions) {
         MercadoPagoCheckout._checkParams({ ...options, publicKey, preferenceId });
 
-        return await CheckoutMercadoPagoModule.startCheckoutForPayment(publicKey, preferenceId, options.backgroundColor, options.enableDarkFont);
+        return await MercadoPagoCheckoutModule.startCheckoutForPayment(publicKey, preferenceId, options.backgroundColor, options.enableDarkFont);
     }
 
     /**
@@ -34,7 +34,7 @@ export class MercadoPagoCheckout {
     static async startForPaymentData(publicKey, preferenceId, options = defaultOptions) {
         MercadoPagoCheckout._checkParams({ ...options, publicKey, preferenceId });
 
-        return await CheckoutMercadoPagoModule.startCheckoutForPaymentData(publicKey, preferenceId, options.backgroundColor, options.enableDarkFont);
+        return await MercadoPagoCheckoutModule.startCheckoutForPaymentData(publicKey, preferenceId, options.backgroundColor, options.enableDarkFont);
     }
 
     static _validate(key, value) {
