@@ -18,7 +18,7 @@ export class MercadoPagoCheckout {
      * @returns {Promise.<*>} - Promise that if resolves gives a PaymentResult object
      */
     static async startForPayment(publicKey, preferenceId, options = defaultOptions) {
-        MercadoPagoCheckout._checkParams(publicKey, preferenceId, options);
+        MercadoPagoCheckout._checkParams({ ...options, publicKey, preferenceId });
 
         return await CheckoutMercadoPagoModule.startCheckoutForPayment(publicKey, preferenceId, options.backgroundColor, options.enableDarkFont);
     }
@@ -32,22 +32,19 @@ export class MercadoPagoCheckout {
      * @returns {Promise.<*>} - Promise that if resolves gives a PaymentData object
      */
     static async startForPaymentData(publicKey, preferenceId, options = defaultOptions) {
-        MercadoPagoCheckout._checkParams(publicKey, preferenceId, options);
+        MercadoPagoCheckout._checkParams({ ...options, publicKey, preferenceId });
 
         return await CheckoutMercadoPagoModule.startCheckoutForPaymentData(publicKey, preferenceId, options.backgroundColor, options.enableDarkFont);
     }
 
-    static _validate(field) {
-        if (!field) {
-            throw `${field.name} required to start MercadoPago checkout`;
+    static _validate(key, value) {
+        if (!value) {
+            throw `${key} required to start MercadoPago checkout`;
         }
     }
 
-    static _checkParams(publicKey, preferenceId, options) {
-        MercadoPagoCheckout._validate(publicKey);
-        MercadoPagoCheckout._validate(preferenceId);
-        MercadoPagoCheckout._validate(options.enableDarkFont);
-        MercadoPagoCheckout._validate(options.backgroundColor);
+    static _checkParams(params) {
+        Object.keys(params).forEach(key => MercadoPagoCheckout._validate(key, params[key]));
     }
 }
 
