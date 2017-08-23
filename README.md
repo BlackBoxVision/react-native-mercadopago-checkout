@@ -92,9 +92,14 @@ You will have to edit your code to add the following lines:
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
-  self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController: rootViewController];
   
-  [self.window.rootViewController.navigationController setToolbarHidden:YES animated:NO];
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+  
+  [navController setToolbarHidden:YES animated:YES];
+  [navController setNavigationBarHidden:YES];
+
+  self.window.rootViewController = navController;
+  
   [self.window makeKeyAndVisible];
   
   return YES;
@@ -102,6 +107,8 @@ You will have to edit your code to add the following lines:
 
 @end
 ```
+
+We need the `rootViewController` attached to the window to be an instance of `UINavigationController`. That's why you have to add those lines, also, we remove Toolbar and NavigationBar in order to prevent overlap with Toolbar/NavigationBar provided by react-native-navigation, or another navigation library.
 
 ## Usage
 
