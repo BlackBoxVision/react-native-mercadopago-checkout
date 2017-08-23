@@ -37,6 +37,78 @@ Check out the `/example` directory for a working demo of a react-native app trig
 3. Navigate to the target configuration window by clicking on the blue project icon, and selecting the application target under the "Targets" heading in the sidebar.
 4. In the 'General' panel, go to the 'Embedded Binaries' section.
 5. Click on the '+' button and select 'MercadoPagoSDK.framework' under `Libraries > MercadoPagoSDK.xcodeproj > Products` from your project
+6. Open your `AppDelegate.m` file, you will see something like this: 
+
+```objective-c
+#import "AppDelegate.h"
+
+#import <React/RCTBundleURLProvider.h>
+#import <React/RCTRootView.h>
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  NSURL *jsCodeLocation;
+
+  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation moduleName:@"example" initialProperties:nil launchOptions:launchOptions];
+  
+  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  UIViewController *rootViewController = [UIViewController new];
+  rootViewController.view = rootView;
+  self.window.rootViewController = rootViewController;
+  [self.window makeKeyAndVisible];
+  
+  return YES;
+}
+
+@end
+```
+
+You will have to edit your code to add the following lines: 
+
+```objective-c
+#import "AppDelegate.h"
+
+#import <React/RCTBundleURLProvider.h>
+#import <React/RCTRootView.h>
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  NSURL *jsCodeLocation;
+
+  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation moduleName:@"example" initialProperties:nil launchOptions:launchOptions];
+  
+  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  UIViewController *rootViewController = [UIViewController new];
+  rootViewController.view = rootView;
+  
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+  
+  [navController setToolbarHidden:YES animated:YES];
+  [navController setNavigationBarHidden:YES];
+
+  self.window.rootViewController = navController;
+  
+  [self.window makeKeyAndVisible];
+  
+  return YES;
+}
+
+@end
+```
+
+We need the `rootViewController` attached to the window to be an instance of `UINavigationController`. That's why you have to add those lines, also, we remove Toolbar and NavigationBar in order to prevent overlap with Toolbar/NavigationBar provided by react-native-navigation, or another navigation library.
 
 ## Usage
 
