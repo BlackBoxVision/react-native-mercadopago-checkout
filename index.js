@@ -18,13 +18,7 @@ export class MercadoPagoCheckout {
      * @returns {Promise.<*>} - Promise that if resolves gives a PaymentResult object
      */
     static async startForPayment(publicKey, preferenceId, options = defaultOptions) {
-        if (!publicKey) {
-            throw 'publicKey required to start MercadoPago checkout';
-        }
-
-        if (!preferenceId) {
-            throw 'preferenceId required to start MercadoPago checkout';
-        }
+        MercadoPagoCheckout._checkParams(publicKey, preferenceId, options);
 
         return await CheckoutMercadoPagoModule.startCheckoutForPayment(publicKey, preferenceId, options.backgroundColor, options.enableDarkFont);
     }
@@ -38,15 +32,22 @@ export class MercadoPagoCheckout {
      * @returns {Promise.<*>} - Promise that if resolves gives a PaymentData object
      */
     static async startForPaymentData(publicKey, preferenceId, options = defaultOptions) {
-        if (!publicKey) {
-            throw 'publicKey required to start MercadoPago checkout';
-        }
-
-        if (!preferenceId) {
-            throw 'preferenceId required to start MercadoPago checkout';
-        }
+        MercadoPagoCheckout._checkParams(publicKey, preferenceId, options);
 
         return await CheckoutMercadoPagoModule.startCheckoutForPaymentData(publicKey, preferenceId, options.backgroundColor, options.enableDarkFont);
+    }
+
+    static _validate(field) {
+        if (!field) {
+            throw `${field.name} required to start MercadoPago checkout`;
+        }
+    }
+
+    static _checkParams(publicKey, preferenceId, options) {
+        MercadoPagoCheckout._validate(publicKey);
+        MercadoPagoCheckout._validate(preferenceId);
+        MercadoPagoCheckout._validate(options.enableDarkFont);
+        MercadoPagoCheckout._validate(options.backgroundColor);
     }
 }
 
