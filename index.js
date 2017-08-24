@@ -17,10 +17,12 @@ export class MercadoPagoCheckout {
      * @param options - An Object containing properties like: backgroundColor, enableDarkFont
      * @returns {Promise.<*>} - Promise that if resolves gives a PaymentResult object
      */
-    static async startForPayment(publicKey, preferenceId, options = defaultOptions) {
-        MercadoPagoCheckout._checkParams({ ...options, publicKey, preferenceId });
+    static async startForPayment(publicKey, preferenceId, options) {
+        const params = { ...defaultOptions, ...options, publicKey, preferenceId };
 
-        return await MercadoPagoCheckoutModule.startCheckoutForPayment(publicKey, preferenceId, options.backgroundColor, options.enableDarkFont);
+        MercadoPagoCheckout._checkParams(params);
+
+        return await MercadoPagoCheckoutModule.startCheckoutForPayment(publicKey, preferenceId, params.backgroundColor, params.enableDarkFont);
     }
 
     /**
@@ -31,20 +33,22 @@ export class MercadoPagoCheckout {
      * @param options - An Object containing properties like: backgroundColor, enableDarkFont
      * @returns {Promise.<*>} - Promise that if resolves gives a PaymentData object
      */
-    static async startForPaymentData(publicKey, preferenceId, options = defaultOptions) {
-        MercadoPagoCheckout._checkParams({ ...options, publicKey, preferenceId });
+    static async startForPaymentData(publicKey, preferenceId, options) {
+        const params = { ...defaultOptions, ...options, publicKey, preferenceId };
 
-        return await MercadoPagoCheckoutModule.startCheckoutForPaymentData(publicKey, preferenceId, options.backgroundColor, options.enableDarkFont);
+        MercadoPagoCheckout._checkParams(params);
+
+        return await MercadoPagoCheckoutModule.startCheckoutForPaymentData(publicKey, preferenceId, params.backgroundColor, params.enableDarkFont);
     }
 
     static _validate(key, value) {
-        if (!value) {
+        if (typeof value === 'undefined') {
             throw `${key} required to start MercadoPago checkout`;
         }
     }
 
     static _checkParams(params) {
-        Object.keys(params).forEach(key => MercadoPagoCheckout._validate(key, params[key]));
+        Object.keys(params).forEach(key => params.hasOwnProperty(key) && MercadoPagoCheckout._validate(key, params[key]));
     }
 }
 
