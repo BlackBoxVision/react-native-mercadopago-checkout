@@ -1,4 +1,4 @@
-#import "MercadoPagoCheckoutModule.h"
+#import "CheckoutMercadoPagoModule.h"
 #import "AppDelegate.h"
 
 @import MercadoPagoSDK;
